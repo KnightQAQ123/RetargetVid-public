@@ -1,0 +1,2 @@
+Method                              ,Worst ,Best  ,Mean  ,ttm   ,tta   ,tcm   ,tca   ,ccm   ,cca   ,ecm   ,eca   ,Worst ,Best  ,Mean  ,ttm   ,tta   ,tcm   ,tca   ,ccm   ,cca   ,ecm   ,eca   ,mf    
+smartvidcrop                        ,48.639,50.855,49.935,-1.000,-1.000,-1.000,-1.000,-1.000,-1.000,-1.000,-1.000,70.116,73.606,71.428,-1.000,-1.000,-1.000,-1.000,-1.000,-1.000,-1.000,-1.000,0

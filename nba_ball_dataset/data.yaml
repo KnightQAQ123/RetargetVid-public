@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 1
+names: ['basketball']
+
+roboflow:
+  workspace: basketballdetector
+  project: nba_dataset
+  version: 4
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/basketballdetector/nba_dataset/dataset/4

@@ -2220,7 +2220,7 @@ def smart_vid_crop(video_path, CP=None,
 				frames_dir='', temp_path=None,
 				verbose=False, save_vid=True,
 				callback_progress=None, callback_session=None, callback_status=None,
-				copy_sound=False):
+				copy_sound=False, focus_points=None):
 	# clear registered time measurements
 	sc_init_time()
 	
@@ -2400,7 +2400,14 @@ def smart_vid_crop(video_path, CP=None,
 		VD['dx'] = []
 		VD['dy'] = []
 		for i in range(VD['fc_sel']):
-			if np.sum(VD['smaps'][:,:,i]) > 0:
+			frame_ind = VD['true_inds'][i]
+			focus = focus_points.get(frame_ind) if focus_points is not None else None
+			if focus is not None:
+				# Custom focus points are normalized to [0, 1] in the original frame.
+				# Convert them to SmartVidCrop's reduced processing-frame coordinates.
+				dx = max(0.0, min(1.0, float(focus[0]))) * VD['w_process']
+				dy = max(0.0, min(1.0, float(focus[1]))) * VD['h_process']
+			elif np.sum(VD['smaps'][:,:,i]) > 0:
 				dx, dy = sc_find_center_of_mass(VD['smaps'][:,:,i],
 												km=CP['com_km'],
 												factor=CP['resize_factor'],
